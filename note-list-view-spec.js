@@ -2,12 +2,9 @@ note = {};
 note.returnNoteText = function(){
   return "A doubled note";
 };
+var noteList = new NoteList();
+noteList.addNote(note);
 
-noteList = {};
-
-noteList.showNotes = function(){
-  return [note];
-};
 
 function testInstantiatesWithNoteList(){
   var noteListView = new NoteListView(noteList);

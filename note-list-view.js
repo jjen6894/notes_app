@@ -6,9 +6,9 @@ function NoteListView(noteList){
 
   NoteListView.prototype.listNotes = function(){
     notes = "<ul>";
-    for (var i = 0; i < this._noteList.length; i++) {
-      notes += "<li><div>" + this._noteList.showNotes()[i].returnNoteText(); + "</div></li>";
-    }
+    this._noteList._notes.forEach(function(element){
+      notes += "<li><div>" + element.returnNoteText() + "</div></li>"
+    });
     notes += "</ul>";
     return notes;
   };
