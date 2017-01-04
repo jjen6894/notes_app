@@ -1,10 +1,18 @@
 (function(exports) {
-  var noteListView = function(notes) {
-    this.notes = new noteList();
-    noteListView.prototype.returnHTML = function() {
-      return '<ul><li><div>Favourite food: pesto</div></li><li><div>Favourite drink: seltzer</div></li></ul>'
-    };
-    };
+
+  var NoteListView = function() {
+    this.notes = new NoteList();
   };
-  exports.noteListView = noteListView;
+  
+  NoteListView.prototype.returnHTML = function() {
+    var arrayLength = this.notes.list.length
+    var htmlString = '<ul>';
+    for (var i = 0; i < arrayLength; i++) {
+      htmlString += '<li><div>' + this.notes.list[i].text + '</div></li>'
+    }
+    htmlString += '</ul>'
+    return htmlString
+  };
+  exports.NoteListView = NoteListView;
+
 })(this);
