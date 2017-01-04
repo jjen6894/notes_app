@@ -1,5 +1,5 @@
-element = document.getElementById('app');
-element.innerHTML = "howdy";
+// element = document.getElementById('app');
+// element.innerHTML = "howdy";
 
 function NoteListController(list){
   this._noteList = list;
