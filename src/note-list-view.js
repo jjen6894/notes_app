@@ -1,9 +1,8 @@
 (function(exports) {
 
-  var NoteListView = function() {
-    this.notes = new NoteList();
+  var NoteListView = function(notelist) {
+    this.notes = notelist;
   };
-  
   NoteListView.prototype.returnHTML = function() {
     var arrayLength = this.notes.list.length
     var htmlString = '<ul>';

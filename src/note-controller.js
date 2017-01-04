@@ -1,4 +1,8 @@
-var changeText = function() {
-  var element = document.getElementById('app');
-  element.innerHTML = 'howdy';
-}
+(function(exports) {
+  var NoteController = function() {
+    this.noteList = new NoteList();
+    this.noteListView = new NoteListView(this.noteList);
+  };
+
+  exports.NoteController = NoteController;
+})(this);

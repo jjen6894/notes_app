@@ -3,8 +3,6 @@ function testAddingNewNote() {
   assert.isTrue(note.text === "Text");
 };
 
-testAddingNewNote();
-
 function testListingAllNotes() {
   var text = 'This is a note on Tuesday';
   var listItems = new NoteList();
@@ -12,35 +10,47 @@ function testListingAllNotes() {
   assert.isTrue(listItems.list.length === 1);
 };
 
-testListingAllNotes();
-
 function testNoteListViewExist() {
   var noteListView = new NoteListView(NoteList());
   assert.isTrue(noteListView)
 };
 
-testNoteListViewExist();
-
 function testPrintingEmptyHtmlString() {
-  var notelistview = new NoteListView();
+  var notelist = new NoteList;
+  var notelistview = new NoteListView(notelist);
   assert.isTrue(notelistview.returnHTML() === '<ul></ul>');
 };
 
-testPrintingEmptyHtmlString();
-
 function testPrintingOneHtmlString() {
-  var notelistview = new NoteListView();
+  var notelist = new NoteList;
+  var notelistview = new NoteListView(notelist);
   notelistview.notes.createNote('My favourite color is: black')
   assert.isTrue(notelistview.returnHTML() === '<ul><li><div>My favourite color is: black</div></li></ul>');
 };
 
-testPrintingOneHtmlString();
-
 function testPrintingTwoHtmlString() {
-  var notelistview = new NoteListView();
+  var notelist = new NoteList;
+  var notelistview = new NoteListView(notelist);
   notelistview.notes.createNote('My favourite color is: black');
   notelistview.notes.createNote('My favourite activity is: sleep');
   assert.isTrue(notelistview.returnHTML() === '<ul><li><div>My favourite color is: black</div></li><li><div>My favourite activity is: sleep</div></li></ul>');
 };
 
+function testNoteControllerExist() {
+  var notecontroller = new NoteController();
+  assert.isTrue(notecontroller);
+};
+
+function testNoteControllerExistWithNoteList() {
+  var notecontroller = new NoteController(NoteList());
+  assert.isTrue(notecontroller);
+};
+
+testAddingNewNote();
+testListingAllNotes();
+testNoteListViewExist();
+testPrintingEmptyHtmlString();
+testPrintingOneHtmlString();
 testPrintingTwoHtmlString();
+testNoteControllerExist();
+testNoteControllerExistWithNoteList();
