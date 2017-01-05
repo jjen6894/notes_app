@@ -42,7 +42,7 @@
 })();
 
 (function testNoteControllerExistWithNoteList() {
-  var notecontroller = new NoteController();
+  var notecontroller = new NoteController(NoteList());
   assert.isTrue(notecontroller);
 })();
 
@@ -52,4 +52,23 @@
   notecontroller.changeText()
   var element = document.getElementById('app');
   assert.isTrue(element.innerHTML === '<ul><li><div>My favourite color is: black</div></li></ul>');
+})();
+
+(function testSingleNoteViewExists() {
+  var singleNoteView = new SingleNoteView();
+  assert.isTrue(singleNoteView);
+})();
+
+(function testSingleNoteViewUponCreation(){
+  var note = new Note("Something");
+  var singleNoteView = new SingleNoteView(note);
+  assert.isTrue(singleNoteView.viewSingleNote.text == "Something");
+})();
+
+(function testSingleNoteViewDisplay(){
+  var note = new Note("Faviourite drink: seltzer");
+  var singleNoteView = new SingleNoteView(note);
+  console.log(singleNoteView);
+  console.log(note);
+  assert.isTrue(singleNoteView.returnNote() === "<div>Faviourite drink: seltzer</div>");
 })();
