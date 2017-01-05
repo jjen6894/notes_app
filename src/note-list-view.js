@@ -7,7 +7,7 @@
     var arrayLength = this.notes.list.length
     var htmlString = '<ul>';
     for (var i = 0; i < arrayLength; i++) {
-      htmlString += '<li><div>' + this.notes.list[i].text + '</div></li>'
+      htmlString += '<li><div>' + this.notes.list[i].text.slice(0, 20) + '</div></li>'
     }
     htmlString += '</ul>'
     return htmlString

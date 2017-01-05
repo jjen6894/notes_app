@@ -6,7 +6,6 @@
 
   SingleNoteView.prototype.returnNote = function(){
     var noteString = "<div>" + this.viewSingleNote.text + "</div>";
-    console.log(noteString);
     return noteString;
   };
 

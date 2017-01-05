@@ -21,19 +21,26 @@
   assert.isTrue(notelistview.returnHTML() === '<ul></ul>');
 })();
 
+(function testPrintingOneNote20Char() {
+  var notelist = new NoteList();
+  notelist.createNote('My favourite color is: black');
+  var notelistview = new NoteListView(notelist);
+  assert.isTrue(notelistview.returnHTML() === "<ul><li><div>My favourite color i</div></li></ul>");
+})();
+
 (function testPrintingOneHtmlString() {
   var notelist = new NoteList;
   var notelistview = new NoteListView(notelist);
   notelistview.notes.createNote('My favourite color is: black')
-  assert.isTrue(notelistview.returnHTML() === '<ul><li><div>My favourite color is: black</div></li></ul>');
+  assert.isTrue(notelistview.returnHTML() === '<ul><li><div>My favourite color i</div></li></ul>');
 })();
 
 (function testPrintingTwoHtmlString() {
   var notelist = new NoteList;
   var notelistview = new NoteListView(notelist);
   notelistview.notes.createNote('My favourite color is: black');
-  notelistview.notes.createNote('My favourite activity is: sleep');
-  assert.isTrue(notelistview.returnHTML() === '<ul><li><div>My favourite color is: black</div></li><li><div>My favourite activity is: sleep</div></li></ul>');
+  notelistview.notes.createNote('My favourite color is: red');
+  assert.isTrue(notelistview.returnHTML() === '<ul><li><div>My favourite color i</div></li><li><div>My favourite color i</div></li></ul>');
 })();
 
 (function testNoteControllerExist() {
@@ -51,7 +58,7 @@
   notecontroller.noteListView.notes.createNote('My favourite color is: black');
   notecontroller.changeText()
   var element = document.getElementById('app');
-  assert.isTrue(element.innerHTML === '<ul><li><div>My favourite color is: black</div></li></ul>');
+  assert.isTrue(element.innerHTML === '<ul><li><div>My favourite color i</div></li></ul>');
 })();
 
 (function testSingleNoteViewExists() {
@@ -68,7 +75,5 @@
 (function testSingleNoteViewDisplay(){
   var note = new Note("Faviourite drink: seltzer");
   var singleNoteView = new SingleNoteView(note);
-  console.log(singleNoteView);
-  console.log(note);
   assert.isTrue(singleNoteView.returnNote() === "<div>Faviourite drink: seltzer</div>");
 })();
