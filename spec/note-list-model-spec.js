@@ -9,3 +9,15 @@
   listItems.createNote(text);
   assert.isTrue(listItems.list.length === 1);
 })();
+
+(function testIncrementNoteID() {
+  var text = "This is the first note";
+  var text2 = "This is the second note";
+  var notelist = new NoteList();
+  notelist.createNote(text);
+  notelist.createNote(text2);
+  var popnote = notelist.list.pop();
+  console.log(popnote);
+  console.log(popnote.id);
+  assert.isTrue(popnote.id === 1);
+})();

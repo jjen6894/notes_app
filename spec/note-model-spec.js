@@ -10,5 +10,5 @@
 
 (function testNewNoteHasID() {
   var note = new Note("test");
-  assert.isTrue(note.id === 1);
+  assert.isTrue(note.id === 0);
 })();
