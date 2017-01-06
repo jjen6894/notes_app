@@ -17,7 +17,5 @@
   notelist.createNote(text);
   notelist.createNote(text2);
   var popnote = notelist.list.pop();
-  console.log(popnote);
-  console.log(popnote.id);
   assert.isTrue(popnote.id === 1);
 })();
